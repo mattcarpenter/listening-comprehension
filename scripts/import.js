@@ -6,6 +6,7 @@
 
 const mongoose = require('mongoose');
 const Sentence = require('../src/server/models/sentence');
+const Tag = require('../src/server/models/tag');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./collection.anki2');
 
@@ -33,15 +34,26 @@ db.each('SELECT * FROM notes', (err, row) => {
     hint: fields.Hint,
     meaning: fields.Meaning,
     notes: fields.Notes,
-    reading: fields.Reading
+    reading: fields.Reading,
+    tags: ['Genki-I']
   });
   sentence.save((err) => {
     if (err) {
       throw err;
     } else {
-      console.log('Saved expression:', fields.Expression);
+      console.log('Inserted expression:', fields.Expression);
     }
   });
+});
+
+// insert Genki tag
+var tag = new Tag({ value: 'Genki-I' });
+tag.save((err) => {
+  if (err) {
+    throw err;
+  } else {
+    console.log('Inserted tag: Genki-I');
+  }
 });
 
 db.close();
