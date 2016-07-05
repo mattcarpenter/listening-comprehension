@@ -8,11 +8,17 @@ server.connection({
   port: 8000
 });
 
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: function (request, reply) {
+    return reply('hello world');
+  }
+});
+
 server.start((err) => {
   if (err) {
-    return console.error(err);
+    throw err;
   }
-
-  console.log('listening...');
-
+  console.log('Server running at:', server.info.uri);
 });
