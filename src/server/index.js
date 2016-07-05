@@ -8,12 +8,14 @@ server.connection({
   port: 8000
 });
 
+// Register inert for static file routing
 server.register(require('inert'), (err) => {
   if (err) {
     throw err;
   }
 });
 
+// Register vision for Jade template compiliation
 server.register(require('vision'), (err) => {
   if (err) {
     throw err;
@@ -48,3 +50,4 @@ server.start((err) => {
   }
   console.log('Server running at:', server.info.uri);
 });
+
