@@ -11,6 +11,7 @@ module.exports = mongoose.model('Sentence', {
   notes: String,
   reading: String,
   tags: [String],
-  userId: { type: Number, default: 0 }
+  userId: { type: Number, default: 0 },
+  active: { type: Boolean, default: true }
 });
 
