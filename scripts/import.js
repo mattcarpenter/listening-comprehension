@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const Sentence = require('../src/server/models/sentence');
 const Tag = require('../src/server/models/tag');
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./collection.anki2');
+const db = new sqlite3.Database('./data/collection.anki2');
 
 // Anki `Japanese (Text Input)-7c80b` model field order 
 const fieldOrder = [
