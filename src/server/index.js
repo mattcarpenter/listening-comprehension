@@ -1,8 +1,14 @@
 'use strict';
 
 const Hapi = require('hapi');
+const mongoose = require('mongoose');
 
-const server = new Hapi.Server();
+const server = new Hapi.Server({
+  debug: {
+    request: ['error']
+  }
+});
+
 server.connection({
   host: 'localhost',
   port: 8000
@@ -30,8 +36,9 @@ server.register(require('vision'), (err) => {
   });
 });
 
-// Home route
+// Other routes
 server.route({ method: 'GET', path: '/', handler: require('./handlers/home') });
+server.route({ method: 'GET', path: '/phrase', handler: require('./handlers/phrase') });
 
 // Static File Routing
 server.route({
@@ -43,6 +50,8 @@ server.route({
     }
   }
 });
+
+mongoose.connect('mongodb://localhost/lc');
 
 server.start((err) => {
   if (err) {

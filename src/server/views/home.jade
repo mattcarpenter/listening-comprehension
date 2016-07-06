@@ -3,8 +3,58 @@ html(lang="en")
   head
     title Learning Comprehention
     link(rel="stylesheet" href="/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
   body
-    h1 Hello World
+    .container
+      nav.navbar.navbar-inverse
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href="#") にほんごListening Comprehension Practice
+      .col-lg-12
+        .well
+          form.form-horizontal
+            fieldset
+              legend Random Phrase
+              .form-group
+                label.col-lg-2.control-label Search terms
+                .col-lg-10
+                  input.form-control(type="text" id="query")
+              .form-group
+                label.col-lg-2.control-label Phrase is a(n)...
+                .col-lg-10
+                  .radio
+                    label
+                      input(type="radio" id="speak" name="speak" value="expression" checked="checked")
+                      | Expression
+                  .radio
+                    label
+                      input(type="radio" id="speak" name="speak" value="question")
+                      | Question
+                  .radio
+                    label
+                      input(type="radio" id="speak" name="speak" value="answer")
+                      | Answer
+              .form-group
+                .col-lg-10.col-lg-offset-2
+                  button.btn.btn-primary
+                    i.fa.fa-step-forward(aria-hidden="true")
+                    | &nbsp;Pick Next Phrase
+      .col-lg-12(id="welcome-message")
+        h2.text-center
+          small Click "Pick Next Phrase" to get started.
+        p.text-center
+          | A sound clip of the phrase will be played and a masked reading of it will be presented here. Hover your your mouse over the mask to see the text.
+      .col-lg-12(id="phrase")
+        h2 Expression:
+        p(id="expression")
+        h2 Question:
+        p(id="question")
+        h2 Answer
+        p(id="answer")
+        .col-lg-10.col-lg-offset-2
+          button.btn.btn-default
+            i.fa.fa-repeat(aria-hidden="true")
+            | &nbsp;Repeat Audio
     script(src="https://code.jquery.com/jquery-2.2.4.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js")
     script(src="/js/bundle.js")
